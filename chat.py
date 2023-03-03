@@ -73,6 +73,7 @@ class Context:
                 self.num_tokens[key] += value
         except Exception as e:
             logger.error(f"Error occured when updating:\n{e}\n")
+            raise Exception("Cannot parse response.")
 
     def dump(self, dump_dir: str):
         try:
@@ -85,6 +86,7 @@ class Context:
                 json.dump(self.cache, fo)
         except Exception as e:
             logger.error(f"Error occured when dumping:\n{e}\n")
+            raise Exception("Cannot dump context cache.")
 
     def load(self, cache_path: str):
         try:
@@ -96,6 +98,7 @@ class Context:
                 self.cache = cache
         except Exception as e:
             logger.error(f"Error occured when loading cache:\n{e}\n")
+            raise Exception("Cannot load cache.")
 
 class Display:
     min_boarder_len: int = 20
