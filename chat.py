@@ -102,7 +102,28 @@ class Context:
 
 class Display:
     min_boarder_len: int = 20
-    def print_boarder(self):
+
+    welcome_msg: str = \
+"""
+================================================
+  ___ _       ___ _         _    ___ ___ _____ 
+ / __(_)_ __ / __| |_  __ _| |_ / __| _ \_   _|
+ \__ \ | '  \ (__| ' \/ _` |  _| (_ |  _/ | |  
+ |___/_|_|_|_\___|_||_\__,_|\__|\___|_|   |_|  
+================================================                                              
+"""
+    def __init__(self):
+        terminal_width = os.get_terminal_size().columns
+        welcome_msg_width = len(self.welcome_msg.split()[0])
+        if terminal_width < welcome_msg_width:
+            self.system_output({
+                "role": "system",
+                "content": f"Change terminal width to no less than {welcome_msg_width} to get a better experience."
+            })
+        else:
+            print(self.welcome_msg, end='')
+
+    def _print_boarder(self):
         terminal_size = os.get_terminal_size()
         width = terminal_size.columns
         print('=' * width + '\n')
