@@ -8,6 +8,7 @@ A simple CLI tool for ChatGPT.
 + markdown==2.6
 + openai
 + mdv
++ inflect
 
 **Not available in Windows now.**
 
@@ -16,11 +17,11 @@ A simple CLI tool for ChatGPT.
 + Help
 
   ```python
-  python chat.py -h
+  python main.py -h
   ```
 
 + With OpenAI API KEY
   
   ```python
-  python chat.py -k <Your API KEP>
+  python main.py -k <Your API KEP>
   ```
