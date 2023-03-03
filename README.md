@@ -1,21 +1,24 @@
-## Simple ChatGPT
+# Simple ChatGPT
 
 A simple CLI tool for ChatGPT.
 
-### Requirements
+## Requirements
 
-+ openai
-+ json
++ python==3.8
 + markdown==2.6
++ openai
 + mdv
 
-### Usage
+**Not available in Windows now.**
+
+## Usage
 
 + Help
 
   ```python
   python chat.py -h
   ```
+
 + With OpenAI API KEY
   
   ```python
