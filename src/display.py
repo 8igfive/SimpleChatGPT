@@ -70,7 +70,7 @@ class Display:
             print_i = 0
             print_tokens = ["|", "/", "-", "\\"]
             while not com_var.stop_flag:
-                print(f"{print_tokens[print_i % 4]}{com_var.display_postfix}\r", end='')
+                print(f"{print_tokens[print_i % 4]} {com_var.display_postfix}\r", end='')
                 time.sleep(0.2)
                 print_i += 1
             sys.stdout.write("\033[K") # 清空当前行
