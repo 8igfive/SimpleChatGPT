@@ -195,10 +195,15 @@ class RequestCommand(BasicCommand):
             self.args = [' '.join(self.args)]
   
     def handle(self, client: Client, context: Context, display: Display) -> Dict[str, str]:
-        context.add_user_input({
-            "role": "user",
-            "content": self.args[0]
-        })
+        try:
+            context.add_user_input({
+                "role": "user",
+                "content": self.args[0]
+            })
+        except Exception as e:
+            logger.error(f"Error occured when getting user input:\n{e}\n")
+            return {"role": "kernel", "content": "\n\nError getting user input."}
+
         waiting_callback = display.waiting()
         try:
             for retry_time in range(client.retry):
