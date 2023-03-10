@@ -151,7 +151,11 @@ class LoadCommand(BasicCommand):
             cache_path = self.args[0]
         else:
             return {"role": "kernel", "content": self.args_check_error_template.format(self.opcode)}
-        context.load(cache_path)
+        try:
+            context.load(cache_path)
+        except Exception as e:
+            logger.error(f"Error occured when loading cache: {e}")
+            return {"role": "kernel", "content": "\n\nLoading cache failed."}
         display.clear_screen()
         display.show_context(context.get_context())
         return {"role": "kernel", "content": "\n\nContext is changed."}
